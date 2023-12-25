@@ -1,10 +1,10 @@
 {
-  "name": "@fcannizzaro/rollup-elgato-distribution-tool",
+  "name": "@fcannizzaro/rollup-stream-deck-package",
   "version": "1.0.1",
   "description": "Rollup plugin to create a distribution package for Elgato Stream Deck plguins",
   "author": "Francesco Saverio Cannizzaro <fcannizzaro>",
   "license": "MIT",
-  "repository": "https://github.com/fcannizzaro/rollup-elgato-distribution-tool",
+  "repository": "https://github.com/fcannizzaro/rollup-stream-deck-package",
   "keywords": [
     "rollup",
     "rollup-plugin",

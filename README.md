@@ -1,13 +1,15 @@
-# Elgato Distribution Tool (Rollup plugin)
+# Stream Deck Package (Rollup plugin)
+
+This plugin uses the [Elgato Distribution Tool](https://docs.elgato.com/sdk/plugins/packaging) to package a Stream Deck plugin.
 
 ## Usage
 
 ```typescript
-import elgatoDistributionTool from "@fcannizzaro/rollup-elgato-distribution-tool";
+import streamDeckPackage from "@fcannizzaro/rollup-stream-deck-package";
 
 export default {
   plugins: [
-    elgatoDistributionTool({
+    streamDeckPackage({
       plugin: "./com.sample.plugin.sdPlugin",
     }),
   ],
