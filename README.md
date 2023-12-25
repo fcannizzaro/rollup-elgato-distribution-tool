@@ -6,10 +6,9 @@
 import elgatoDistributionTool from "@fcannizzaro/rollup-elgato-distribution-tool";
 
 export default {
-  /// ...
   plugins: [
     elgatoDistributionTool({
-      plugin:  "./com.sample.plugin.sdPlugin"
+      plugin: "./com.sample.plugin.sdPlugin",
     }),
   ],
 };
@@ -17,9 +16,9 @@ export default {
 
 ## Options
 
-- `plugin`: path to plugin folder (.sdPlugin)
+- `plugin` path to plugin folder (.sdPlugin)
 
-- `output`: path to output folder (default: `./`)
+- `output` path to output folder (default: `./`)
 
 ## License
 
