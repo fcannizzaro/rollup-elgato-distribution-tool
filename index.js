@@ -16,17 +16,19 @@ export default function (options) {
     throw new Error("Missing plugin param");
   }
   return {
-    name: "elgato-distribution-tool",
+    name: "stream-deck-package",
     buildEnd() {
+      const platform = os.platform();
+
       const bin =
-        os.platform() === "win32"
+        platform === "win32"
           ? "DistributionTool.exe"
-          : os.platform() === "darwin"
+          : platform === "darwin"
           ? "DistributionTool"
           : undefined;
 
       if (!bin) {
-        return this.error(`Unsupported platform ${os.platform()}`);
+        return this.error(`Unsupported platform ${platform}`);
       }
 
       const pluginPath = path.join(process.cwd(), options.plugin);
@@ -53,12 +55,14 @@ export default function (options) {
       }
 
       try {
+        platform === "darwin" && execSync(`chmod +x ${__dirname}/bin/${bin}`);
+
         execSync(
           `${__dirname}/bin/${bin} -b -i ${pluginPath} -o ${outputPath}`
         );
       } catch (e) {
-        console.log(e);
-        return this.error(`Plugin build failed`);
+        this.error(`Plugin build failed`);
+        this.error(e);
       }
     },
   };
