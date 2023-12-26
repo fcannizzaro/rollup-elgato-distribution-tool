@@ -1,7 +1,7 @@
 {
   "name": "@fcannizzaro/rollup-stream-deck-package",
   "version": "1.0.4",
-  "description": "Rollup plugin to create a distribution package for Elgato Stream Deck plguins",
+  "description": "Rollup plugin to create a distribution package for Elgato Stream Deck plugins",
   "author": "Francesco Saverio Cannizzaro <fcannizzaro>",
   "type": "module",
   "main": "./index.js",
