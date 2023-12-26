@@ -1,17 +1,33 @@
 import { execSync } from "child_process";
+import type { Plugin } from "rollup";
+import path from "path";
 import os from "os";
 import fs from "fs";
-import path from "path";
 import url from "url";
 
 const __dirname = url.fileURLToPath(new URL(".", import.meta.url));
 
+interface PluginOptions {
+  /**
+   * Path  of the .sdPlugin directory
+   */
+  plugin: string;
+
+  /**
+   * Path where put the .streamdeckPlugin package
+   */
+  output?: string;
+}
+
+const Binaries: Record<string, string> = {
+  win32: "DistributionTool.exe",
+  darwin: "DistributionTool",
+};
+
 /**
- *
- * @param {import(".").RollupElgatoDistributionToolPluginOptions} options
- * @returns {import("rollup").Plugin}
+ * Rollup plugin to package a .sdPlugin directory into a .streamdeckPlugin package using the Elgato Distribution Tool
  */
-export default function (options) {
+export default function (options: PluginOptions): Plugin {
   if (!options.plugin) {
     throw new Error("Missing plugin param");
   }
@@ -19,13 +35,7 @@ export default function (options) {
     name: "stream-deck-package",
     closeBundle() {
       const platform = os.platform();
-
-      const bin =
-        platform === "win32"
-          ? "DistributionTool.exe"
-          : platform === "darwin"
-          ? "DistributionTool"
-          : undefined;
+      const bin = Binaries[platform];
 
       if (!bin) {
         return this.error(`Unsupported platform ${platform}`);
@@ -54,15 +64,13 @@ export default function (options) {
         fs.rmSync(filePath);
       }
 
-      try {
-        platform === "darwin" && execSync(`chmod +x ${__dirname}/bin/${bin}`);
+      const executable = `${__dirname}/bin/${bin}`;
 
-        execSync(
-          `${__dirname}/bin/${bin} -b -i ${pluginPath} -o ${outputPath}`
-        );
+      try {
+        platform === "darwin" && execSync(`chmod +x ${executable}`);
+        execSync(`${executable} -b -i ${pluginPath} -o ${outputPath}`);
       } catch (e) {
-        this.error(`Plugin build failed`);
-        this.error(e);
+        this.error("Error while packaging the plugin");
       }
     },
   };

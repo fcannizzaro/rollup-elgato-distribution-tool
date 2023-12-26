@@ -1,8 +1,11 @@
 {
   "name": "@fcannizzaro/rollup-stream-deck-package",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Rollup plugin to create a distribution package for Elgato Stream Deck plguins",
   "author": "Francesco Saverio Cannizzaro <fcannizzaro>",
+  "type": "module",
+  "main": "./index.js",
+  "types": "./index.d.ts",
   "license": "MIT",
   "repository": "https://github.com/fcannizzaro/rollup-stream-deck-package",
   "keywords": [
@@ -11,13 +14,15 @@
     "elgato",
     "stream-deck"
   ],
+  "scripts": {
+    "build": "tsc --declaration"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.5",
+    "rollup": "^4.9.1",
+    "typescript": "^5.3.3"
+  },
   "publishConfig": {
     "provenance": true
-  },
-  "type": "module",
-  "main": "./index.js",
-  "types": "./index.d.ts",
-  "devDependencies": {
-    "rollup": "^4.9.1"
   }
 }
