@@ -17,7 +17,7 @@ export default function (options) {
   }
   return {
     name: "stream-deck-package",
-    buildEnd() {
+    closeBundle() {
       const platform = os.platform();
 
       const bin =
