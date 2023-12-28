@@ -1,5 +1,10 @@
 # Stream Deck Package (Rollup plugin)
 
+[![npm version](https://badge.fury.io/js/@fcannizzaro%2Frollup-stream-deck-package.svg)](https://badge.fury.io/js/@fcannizzaro%2Frollup-stream-deck-package)
+[![Publish Package to npmjs](https://github.com/fcannizzaro/rollup-stream-deck-package/actions/workflows/publish-package.yaml/badge.svg)](https://github.com/fcannizzaro/rollup-stream-deck-package/actions/workflows/publish-package.yaml)
+
+
+
 This plugin uses the [Elgato Distribution Tool](https://docs.elgato.com/sdk/plugins/packaging) to package a Stream Deck plugin.
 
 ## Usage
